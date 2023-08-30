@@ -1,0 +1,11 @@
+.pokemon-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.pokemon-card-grid {
+  display: grid;
+  grid-auto-columns: auto;
+}

@@ -1,0 +1,10 @@
+.header {
+  color: red;
+  display: grid;
+}
+
+.logo {
+  align-self: center;
+  display: flex;
+  justify-self: center;
+}
