@@ -1,8 +1,5 @@
 import axios from "axios";
-import {
-  PokemonInterface,
-  PokemonModel,
-} from "~/assets/Models.ts/PokemonModel";
+import { PokemonInterface, PokemonModel } from "~/assets/models/PokemonModel";
 
 export default defineEventHandler(async (event) => {
   const { data, status } = await axios.get(
