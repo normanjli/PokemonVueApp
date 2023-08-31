@@ -6,7 +6,8 @@
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare",
+    "test": "vitest --run --reporter verbose --globals"
   },
   "devDependencies": {
     "@nuxt/devtools": "latest",
@@ -14,7 +15,9 @@
   },
   "dependencies": {
     "@nuxt/image": "^1.0.0-rc.1",
+    "@nuxt/test-utils": "^3.7.0",
     "axios": "^1.5.0",
-    "pokemon-sprites": "github:PokeAPI/sprites"
+    "pokemon-sprites": "github:PokeAPI/sprites",
+    "vitest": "^0.33.0"
   }
 }
