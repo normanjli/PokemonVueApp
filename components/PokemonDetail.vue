@@ -1,6 +1,10 @@
 <template>
   <div class="pokemon-detail-wrapper">
-    <img class="pokemon-detail-image" :src="pokemon?.spriteImgSrc" />
+    <NuxtImg
+      class="pokemon-detail-image"
+      :src="pokemon?.spriteImgSrc"
+      :alt="pokemon.displayName"
+    />
     <div class="pokemon-detail-text-wrapper">
       <h1 class="pokemon-name">{{ pokemon.displayName }}</h1>
       <p><strong>Abilities:</strong> {{ pokemon.displayAbilities }}</p>

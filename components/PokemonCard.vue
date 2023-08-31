@@ -1,6 +1,10 @@
 <template>
   <NuxtLink :href="pokemonLinkString" class="pokemon-card">
-    <img :src="pokemon?.spriteImgSrc" />
+    <NuxtImg
+      class="thumbnail"
+      :src="pokemon?.spriteImgSrc"
+      :alt="pokemon?.displayName"
+    />
     {{ pokemon?.displayName }}
   </NuxtLink>
 </template>

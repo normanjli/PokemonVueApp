@@ -42,3 +42,8 @@
   width: 50%;
   max-width: 200px;
 }
+
+.thumbnail {
+  height: 96px;
+  width: 96px;
+}
