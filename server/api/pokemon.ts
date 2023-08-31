@@ -1,5 +1,4 @@
 import axios from "axios";
-import { PokemonInterface, PokemonModel } from "~/assets/models/PokemonModel";
 
 export default defineEventHandler(async (event) => {
   const { data, status } = await axios.get(
@@ -10,9 +9,12 @@ export default defineEventHandler(async (event) => {
     throw status;
   }
 
-  const pokemon = data.results.map(
-    (pokemon: PokemonInterface) => new PokemonModel(pokemon)
+  const urls: string[] = data.results.map(({ url }: { url: string }) => url);
+  const pokemon = await Promise.all(
+    urls.map(async (url) => {
+      const { data, status } = await axios.get(url);
+      return data;
+    })
   );
-
   return pokemon;
 });

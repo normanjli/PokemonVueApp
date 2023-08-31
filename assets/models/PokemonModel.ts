@@ -1,14 +1,25 @@
+export interface Ability {
+  ability: { name: string };
+}
+
 export interface PokemonInterface {
-  name: string;
+  species?: {
+    name: string;
+    url: string;
+  };
   id: number;
-  url: string;
   spriteImgSrc: string;
+  abilities: Ability[];
+  sprites?: { front_default: string };
+  height: string;
+  weight: string;
 }
 
 export class PokemonModel implements PokemonInterface {
   name: string = "";
 
-  height: number = 0;
+  height: string = "";
+  weight: string = "";
 
   id: number = 0;
 
@@ -16,10 +27,30 @@ export class PokemonModel implements PokemonInterface {
 
   spriteImgSrc: string = "";
 
+  abilities: Ability[] = [];
+
   constructor(props: PokemonInterface) {
-    this.name = props.name;
-    this.id = parseInt(props.url.split("/", 7)?.pop() || "0");
-    this.url = props.url;
-    this.spriteImgSrc = `https://github.com/PokeAPI/sprites/blob/master/sprites/pokemon/${this.id}.png?raw=true`;
+    this.name = props?.species?.name || "";
+    this.id = props.id;
+    this.url = props?.species?.url || "";
+    this.spriteImgSrc = props?.sprites?.front_default || "";
+    this.abilities = props.abilities;
+    this.height = props.height;
+    this.weight = props.weight;
+  }
+
+  get displayName() {
+    return this.name.charAt(0).toUpperCase() + this.name.slice(1);
+  }
+
+  get displayAbilities() {
+    return this.abilities
+      .map(({ ability }) => {
+        const words = ability.name.split("-");
+        return words
+          .map((name) => name.charAt(0).toUpperCase() + name.slice(1))
+          .join(" ");
+      })
+      .join(", ");
   }
 }

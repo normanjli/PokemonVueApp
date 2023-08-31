@@ -1,7 +1,11 @@
 <template>
-  <p v-if="pending">Loading</p>
-  <div class="pokemon-card-container" v-else>
-    <input type="text" @input="onSearch" class="search-bar" />
+  <div class="pokemon-card-container">
+    <input
+      type="text"
+      @input="onSearch"
+      placeholder="Search..."
+      class="search-bar"
+    />
     <section class="pokemon-card-grid">
       <PokemonCard
         v-for="pokemon in filterPokemon(pokemonList, search)"
@@ -16,8 +20,9 @@ import { PokemonModel } from "~/assets/models/PokemonModel";
 import PokemonCard from "./PokemonCard.vue";
 import "~/assets/css/PokemonContainer.css";
 
-const { data: pokemonList, pending } = useFetch("/api/pokemon");
 const search: Ref<RegExp | null> = ref(null);
+
+const pokemonList = await useFetchPokemon();
 
 const filterPokemon = (pokemonList: PokemonModel[], search: RegExp | null) => {
   return pokemonList.filter((poke: PokemonModel) => {
