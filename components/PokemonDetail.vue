@@ -15,15 +15,13 @@
 </template>
 
 <script lang="ts" setup>
-import { PokemonModel } from "~/assets/models/PokemonModel";
 import "~/assets/css/PokemonDetailStyles.css";
+import { PokemonModel } from "~/assets/models/PokemonModel";
 
 const route = useRoute();
 const id = parseInt((route?.params?.id as string) || "0");
 
-const pokemonList = await useFetchPokemon();
-
-const pokemon = pokemonList.value.filter((pokemon) => pokemon.id === id)[0];
+const pokemon = (await useFetchPokemonDetail(id)) as Ref<PokemonModel>;
 </script>
 
 <style></style>

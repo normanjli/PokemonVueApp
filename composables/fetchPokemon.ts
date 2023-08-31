@@ -1,11 +1,10 @@
-import { PokemonModel } from "~/assets/models/PokemonModel";
+import { PokemonCardModel } from "~/assets/models/PokemonCardModel";
 
-export const useFetchPokemon = async () => {
-  const { data } = await useFetch("/api/pokemon");
-  const pokemonList = useConvertData({
-    data: data.value as PokemonModel[],
-    model: PokemonModel,
+export const useFetchManyPokemon = async () => {
+  const { data } = await useFetch("/api/getManyPokemon");
+  const pokemonList = useConvertManyData({
+    data: data.value as PokemonCardModel[],
+    model: PokemonCardModel,
   });
-
   return pokemonList;
 };

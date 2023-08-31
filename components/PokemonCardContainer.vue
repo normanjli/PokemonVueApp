@@ -16,16 +16,19 @@
 </template>
 
 <script lang="ts" setup>
-import { PokemonModel } from "~/assets/models/PokemonModel";
-import PokemonCard from "./PokemonCard.vue";
 import "~/assets/css/PokemonContainer.css";
+import PokemonCard from "./PokemonCard.vue";
+import { PokemonCardModel } from "~/assets/models/PokemonCardModel";
 
 const search: Ref<RegExp | null> = ref(null);
 
-const pokemonList = await useFetchPokemon();
+const pokemonList = await useFetchManyPokemon();
 
-const filterPokemon = (pokemonList: PokemonModel[], search: RegExp | null) => {
-  return pokemonList.filter((poke: PokemonModel) => {
+const filterPokemon = (
+  pokemonList: PokemonCardModel[],
+  search: RegExp | null
+) => {
+  return pokemonList.filter((poke: PokemonCardModel) => {
     if (!search) {
       return true;
     }

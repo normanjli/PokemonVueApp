@@ -10,9 +10,9 @@
 </template>
 
 <script lang="ts" setup>
-import { PokemonModel } from "~/assets/models/PokemonModel";
+import { PokemonCardModel } from "~/assets/models/PokemonCardModel";
 
-const { pokemon } = defineProps({ pokemon: PokemonModel });
+const { pokemon } = defineProps({ pokemon: PokemonCardModel });
 
 const pokemonLinkString = `/pokemon/${pokemon?.id}`;
 </script>
